@@ -2,6 +2,7 @@
 export default {
   content: [
     "./index.html",
+    "./dashboard/index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
@@ -15,6 +16,8 @@ export default {
       },
       fontFamily: {
         sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        heading: ['"Space Grotesk"', '"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        body: ['Inter', '"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
       },
     },
   },
