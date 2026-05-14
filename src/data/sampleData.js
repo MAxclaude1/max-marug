@@ -1,0 +1,70 @@
+import { v4 as uuidv4 } from 'uuid'
+
+function daysFromNow(n) {
+  const d = new Date()
+  d.setDate(d.getDate() + n)
+  return d.toISOString().split('T')[0]
+}
+
+export const SAMPLE_PARTNERS = [
+  {
+    id: uuidv4(),
+    company: 'Tomorrowmen',
+    sector: 'Consultancy',
+    contactName: 'Roman Solarz',
+    contactEmail: 'hallo@tomorrowmen.nl',
+    contactPhone: '',
+    contactLinkedIn: 'https://linkedin.com/in/romansolarz',
+    partnershipTier: 'Main Partner',
+    status: 'Voorstel verstuurd',
+    events: ['Conference', 'Recruitment Days'],
+    financialValue: 1000,
+    source: 'Warm contact',
+    priority: 'Hoog',
+    followUpDate: daysFromNow(3),
+    lastContactDate: daysFromNow(-7),
+    notes: 'Geïnteresseerd in AI course (maandagavond). Voorkeur NL, wij liever EN. Wil podiumtijd, niet alleen logo. Potentieel bij RD en Conference.',
+    createdAt: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+  {
+    id: uuidv4(),
+    company: 'Harvest Digital',
+    sector: 'Tech',
+    contactName: '',
+    contactEmail: '',
+    contactPhone: '',
+    contactLinkedIn: '',
+    partnershipTier: 'Event Partner',
+    status: 'Benaderd',
+    events: ['Recruitment Days'],
+    financialValue: 500,
+    source: 'LinkedIn',
+    priority: 'Gemiddeld',
+    followUpDate: daysFromNow(0),
+    lastContactDate: daysFromNow(-3),
+    notes: 'Al zichtbaar op homepage als banner. Peilen of ze meer willen.',
+    createdAt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+  {
+    id: uuidv4(),
+    company: 'Belsimpel',
+    sector: 'Retail',
+    contactName: '',
+    contactEmail: '',
+    contactPhone: '',
+    contactLinkedIn: '',
+    partnershipTier: 'Main Partner',
+    status: 'Deal gesloten',
+    events: ['Conference', 'Recruitment Days', 'Inhousetour'],
+    financialValue: 2500,
+    source: 'Vorig bestuur',
+    priority: 'Hoog',
+    followUpDate: daysFromNow(60),
+    lastContactDate: daysFromNow(-5),
+    notes: 'Traineeship en parttime vacatures actief. Jaarlijkse partner.',
+    createdAt: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+]

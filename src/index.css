@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f8f8f9;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Kanban scroll */
+.kanban-board {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+  min-height: calc(100vh - 260px);
+}
+
+.kanban-board::-webkit-scrollbar {
+  height: 6px;
+}
+.kanban-board::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+.kanban-board::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+
+/* Kanban columns */
+.kanban-column {
+  min-width: 272px;
+  width: 272px;
+  flex-shrink: 0;
+}
+
+/* Drag ghost */
+.dragging-card {
+  opacity: 0.5;
+  transform: rotate(1.5deg);
+}
+
+/* Drawer animation */
+.drawer-overlay {
+  animation: fadeIn 0.15s ease;
+}
+.drawer-panel {
+  animation: slideIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* Toast */
+.toast-enter {
+  animation: toastIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes toastIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Status transitions */
+.status-badge {
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/* Table row hover */
+.partner-row:hover {
+  background: #f9fafb;
+}
+
+/* Smooth card drop */
+.kanban-card {
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+.kanban-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transform: translateY(-1px);
+}
+
+/* Priority dot pulse for high priority overdue */
+.priority-urgent {
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Form input field */
+.input-field {
+  @apply w-full px-3 py-2 text-sm border border-gray-200 rounded-lg bg-white text-gray-900 focus:outline-none transition-colors;
+}
+.input-field:focus {
+  border-color: #C91E2D;
+  box-shadow: 0 0 0 2px rgba(201, 30, 45, 0.15);
+}
