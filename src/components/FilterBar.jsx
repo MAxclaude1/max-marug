@@ -71,7 +71,7 @@ export default function FilterBar({
               : 'border-gray-200 bg-white text-gray-600 hover:bg-gray-50'
           }`}
         >
-          <Filter size={15} />
+          <Filter size={15} color="#ff69b4" />
           Filters
           {activeFilterCount > 0 && (
             <span className="bg-red-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">
