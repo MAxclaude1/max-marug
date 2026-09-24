@@ -35,7 +35,7 @@ export const SAMPLE_PARTNERS = [
     partnershipTier: 'Event Partner',
     status: 'Deal gesloten',
     events: [],
-    financialValue: 0,
+    financialValue: 4680,
     source: 'Eigen netwerk',
     priority: 'Gemiddeld',
     followUpDate: '2026-11-01',
