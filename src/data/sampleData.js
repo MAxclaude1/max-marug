@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 
-export const DATA_VERSION = '2026-10-15-3'
+export const DATA_VERSION = '2026-10-15-4'
 
 // Real partner data extracted from email history (extern@marug.nl)
 export const SAMPLE_PARTNERS = [
@@ -85,6 +85,27 @@ export const SAMPLE_PARTNERS = [
     lastContactDate: '2026-10-15',
     notes: 'Deal binnen: €1.250 partnership. Inhousetour €50/student, minimaal 10 studenten (€500 min), streven naar 15 studenten (€750). Totaal bij 15 studenten: €2.000. Totaal bij 10 studenten: €1.750.',
     createdAt: new Date('2026-10-15').toISOString(),
+    updatedAt: new Date('2026-10-15').toISOString(),
+  },
+
+  {
+    id: uuidv4(),
+    company: 'ING',
+    sector: 'Finance',
+    contactName: 'Evi van Etteger',
+    contactEmail: 'evi.van.etteger@ing.com',
+    contactPhone: '+31 6 25263446',
+    contactLinkedIn: '',
+    partnershipTier: 'Eenmalig',
+    status: 'Deal gesloten',
+    events: [],
+    financialValue: 300,
+    source: 'Eigen netwerk',
+    priority: 'Gemiddeld',
+    followUpDate: '2026-10-22',
+    lastContactDate: '2026-10-15',
+    notes: 'Instagram post voor het inhouse event van ING, €300. Factuur 26700022 is verstuurd (13 okt). Evi vindt het dubbel om te betalen omdat er geen aanmeldingen kwamen via de promotie. Penningmeester Mees bood op 15 okt aan de post niet door te rekenen als ING in plaats daarvan iets anders afsluit: vacaturebank + MARUG Pool voor €750 excl. btw, of een speeddate event. Wacht op keuze van Evi, Max werkt het dan uit. Let op: de €300 is niet zeker als ING voor een van de alternatieven kiest.',
+    createdAt: new Date('2026-10-13').toISOString(),
     updatedAt: new Date('2026-10-15').toISOString(),
   },
 
