@@ -1,5 +1,7 @@
 import { v4 as uuidv4 } from 'uuid'
 
+export const DATA_VERSION = '2026-10-15-3'
+
 // Real partner data extracted from email history (extern@marug.nl)
 export const SAMPLE_PARTNERS = [
   // ── DEAL GESLOTEN ─────────────────────────────────────────────────────────

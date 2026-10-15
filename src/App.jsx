@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import { SAMPLE_PARTNERS } from './data/sampleData'
+import { SAMPLE_PARTNERS, DATA_VERSION } from './data/sampleData'
 import Header from './components/Header'
 import KanbanBoard from './components/KanbanBoard'
 import TableView from './components/TableView'
@@ -11,16 +11,27 @@ import DeleteModal from './components/DeleteModal'
 
 const STORAGE_KEY = 'marug_crm_partners'
 
+const VERSION_KEY = 'marug_crm_data_version'
+
 function loadPartners() {
   try {
     const stored = localStorage.getItem(STORAGE_KEY)
-    if (stored) return JSON.parse(stored)
+    if (stored) {
+      const parsed = JSON.parse(stored)
+      if (localStorage.getItem(VERSION_KEY) === DATA_VERSION) return parsed
+      const known = new Set(SAMPLE_PARTNERS.map(p => p.company.toLowerCase()))
+      const extra = parsed.filter(p => !known.has((p.company || '').toLowerCase()))
+      return [...extra, ...SAMPLE_PARTNERS]
+    }
   } catch {}
   return SAMPLE_PARTNERS
 }
 
 function savePartners(partners) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(partners))
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(partners))
+    localStorage.setItem(VERSION_KEY, DATA_VERSION)
+  } catch {}
 }
 
 export default function App() {
