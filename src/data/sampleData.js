@@ -65,6 +65,27 @@ export const SAMPLE_PARTNERS = [
     updatedAt: new Date('2026-09-04').toISOString(),
   },
 
+  {
+    id: uuidv4(),
+    company: 'Elevation Group',
+    sector: 'Overig',
+    contactName: '',
+    contactEmail: '',
+    contactPhone: '',
+    contactLinkedIn: '',
+    partnershipTier: 'Event Partner',
+    status: 'Deal gesloten',
+    events: ['Inhousetour'],
+    financialValue: 2000,
+    source: 'Eigen netwerk',
+    priority: 'Gemiddeld',
+    followUpDate: '2026-11-01',
+    lastContactDate: '2026-10-15',
+    notes: 'Deal binnen: €1.250 partnership. Inhousetour €50/student, minimaal 10 studenten (€500 min), streven naar 15 studenten (€750). Totaal bij 15 studenten: €2.000. Totaal bij 10 studenten: €1.750.',
+    createdAt: new Date('2026-10-15').toISOString(),
+    updatedAt: new Date('2026-10-15').toISOString(),
+  },
+
   // ── VOORSTEL VERSTUURD ────────────────────────────────────────────────────
 
   {
