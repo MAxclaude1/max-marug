@@ -1,6 +1,12 @@
 import { AlertTriangle } from 'lucide-react'
 
-export default function DeleteModal({ onConfirm, onCancel }) {
+export default function DeleteModal({
+  onConfirm,
+  onCancel,
+  title = 'Partner verwijderen',
+  body = 'Weet je het zeker? Dit kan niet ongedaan worden gemaakt.',
+  confirmLabel = 'Verwijderen',
+}) {
   return (
     <>
       <div className="fixed inset-0 bg-black/40 z-50 backdrop-blur-sm" onClick={onCancel} />
@@ -11,12 +17,12 @@ export default function DeleteModal({ onConfirm, onCancel }) {
               <AlertTriangle size={20} className="text-red-600" />
             </div>
             <div>
-              <h3 className="font-bold text-gray-900">Partner verwijderen</h3>
+              <h3 className="font-bold text-gray-900">{title}</h3>
               <p className="text-sm text-gray-500 mt-0.5">Dit kan niet ongedaan worden gemaakt.</p>
             </div>
           </div>
           <p className="text-sm text-gray-600 mb-6">
-            Weet je het zeker? Dit kan niet ongedaan worden gemaakt.
+            {body}
           </p>
           <div className="flex gap-3">
             <button
@@ -29,7 +35,7 @@ export default function DeleteModal({ onConfirm, onCancel }) {
               onClick={onConfirm}
               className="flex-1 px-4 py-2 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors"
             >
-              Verwijderen
+              {confirmLabel}
             </button>
           </div>
         </div>

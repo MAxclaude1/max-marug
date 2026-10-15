@@ -31,6 +31,7 @@ export default function App() {
   const [defaultStatus, setDefaultStatus] = useState('Lead')
   const [toast, setToast] = useState(null)
   const [deleteConfirm, setDeleteConfirm] = useState(null)
+  const [resetConfirm, setResetConfirm] = useState(false)
 
   const [search, setSearch] = useState('')
   const [filterStatus, setFilterStatus] = useState([])
@@ -141,9 +142,9 @@ export default function App() {
   ].filter(Boolean).length
 
   const resetData = useCallback(() => {
-    if (!window.confirm('Weet je zeker dat je alle data wilt resetten naar de standaarddata? Handmatige wijzigingen gaan verloren.')) return
-    localStorage.removeItem(STORAGE_KEY)
+    try { localStorage.removeItem(STORAGE_KEY) } catch {}
     setPartners(SAMPLE_PARTNERS)
+    setResetConfirm(false)
     showToast('Data herladen ✓')
   }, [showToast])
 
@@ -162,14 +163,27 @@ export default function App() {
     const csv = [headers, ...rows]
       .map(row => row.map(v => `"${String(v ?? '').replace(/"/g, '""')}"`).join(','))
       .join('\n')
-    const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = url
-    a.download = `marug-partners-${new Date().toISOString().split('T')[0]}.csv`
-    a.click()
-    URL.revokeObjectURL(url)
-    showToast('CSV geëxporteerd ✓')
+    const filename = `marug-partners-${new Date().toISOString().split('T')[0]}.csv`
+    const data = '\uFEFF' + csv
+    ;(async () => {
+      try {
+        const downloads = await window.claude?.use?.('downloads')
+        if (downloads) {
+          await downloads.save({ filename, data })
+          showToast('CSV geëxporteerd ✓')
+          return
+        }
+      } catch (err) {
+        if (err?.code === 'declined') return
+      }
+      const url = URL.createObjectURL(new Blob([data], { type: 'text/csv;charset=utf-8;' }))
+      const a = document.createElement('a')
+      a.href = url
+      a.download = filename
+      a.click()
+      URL.revokeObjectURL(url)
+      showToast('CSV geëxporteerd ✓')
+    })()
   }, [partners, showToast])
 
   return (
@@ -179,7 +193,7 @@ export default function App() {
         view={view}
         setView={setView}
         onExport={exportCSV}
-        onReset={resetData}
+        onReset={() => setResetConfirm(true)}
         onNewPartner={() => openNewPartner('Lead')}
       />
 
@@ -223,6 +237,16 @@ export default function App() {
         <DeleteModal
           onConfirm={confirmDelete}
           onCancel={() => setDeleteConfirm(null)}
+        />
+      )}
+
+      {resetConfirm && (
+        <DeleteModal
+          title="Data herladen"
+          body="Alle handmatige wijzigingen gaan verloren en de standaarddata wordt opnieuw geladen."
+          confirmLabel="Herladen"
+          onConfirm={resetData}
+          onCancel={() => setResetConfirm(false)}
         />
       )}
 
