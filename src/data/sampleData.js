@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 
-export const DATA_VERSION = '2026-10-15-4'
+export const DATA_VERSION = '2026-10-15-5'
 
 // Real partner data extracted from email history (extern@marug.nl)
 export const SAMPLE_PARTNERS = [
@@ -329,11 +329,11 @@ export const SAMPLE_PARTNERS = [
     status: 'In gesprek',
     events: [],
     financialValue: 0,
-    source: 'Eigen netwerk',
+    source: 'Vorig bestuur',
     priority: 'Gemiddeld',
     followUpDate: '2026-12-01',
     lastContactDate: '2026-10-13',
-    notes: 'AI course in het voorjaar van 2027 ingepland op donderdag 28 januari 2027 (Anne-Wil IJzelenberg, Gaby Smit in cc). MARUG-bestuur koos optie 2: laten zien hoe de eigen marketingafdeling Gen AI gebruikt om afbeeldingen te genereren. Anne-Wil vraagt nog tijdslot en duur. Geen bedrag bekend.',
+    notes: 'Contract voor een business course (AI-thema) en vacature (Talen Program) is in april/mei 2026 door het vorige bestuur (David Noordman) afgesloten; Max nam de lopende samenwerking per 7 juni over. Geen bedrag in de mails gevonden. Jouw deel is de uitvoering: AI course ingepland op donderdag 28 januari 2027 (Anne-Wil IJzelenberg, Gaby Smit in cc), bestuur koos optie 2 (laten zien hoe de eigen marketingafdeling Gen AI gebruikt om afbeeldingen te genereren). Anne-Wil vraagt nog tijdslot en duur.',
     createdAt: new Date('2026-09-05').toISOString(),
     updatedAt: new Date('2026-09-10').toISOString(),
   },
