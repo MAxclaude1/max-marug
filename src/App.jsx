@@ -140,6 +140,13 @@ export default function App() {
     showAfgewezen,
   ].filter(Boolean).length
 
+  const resetData = useCallback(() => {
+    if (!window.confirm('Weet je zeker dat je alle data wilt resetten naar de standaarddata? Handmatige wijzigingen gaan verloren.')) return
+    localStorage.removeItem(STORAGE_KEY)
+    setPartners(SAMPLE_PARTNERS)
+    showToast('Data herladen ✓')
+  }, [showToast])
+
   const exportCSV = useCallback(() => {
     const headers = [
       'Bedrijf','Sector','Contactpersoon','E-mail','Telefoon','LinkedIn',
@@ -172,6 +179,7 @@ export default function App() {
         view={view}
         setView={setView}
         onExport={exportCSV}
+        onReset={resetData}
         onNewPartner={() => openNewPartner('Lead')}
       />
 

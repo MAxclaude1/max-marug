@@ -1,4 +1,4 @@
-import { LayoutGrid, List, Download, Plus, CalendarClock, TrendingUp, CheckCircle2, Users, Euro } from 'lucide-react'
+import { LayoutGrid, List, Download, Plus, CalendarClock, TrendingUp, CheckCircle2, Users, Euro, RefreshCw } from 'lucide-react'
 
 function todayStr() {
   return new Date().toISOString().split('T')[0]
@@ -8,7 +8,7 @@ function fmt(n) {
   return new Intl.NumberFormat('nl-NL', { minimumFractionDigits: 0 }).format(n)
 }
 
-export default function Header({ partners, view, setView, onExport, onNewPartner }) {
+export default function Header({ partners, view, setView, onExport, onReset, onNewPartner }) {
   const today = todayStr()
 
   const totalLeads = partners.length
@@ -69,6 +69,15 @@ export default function Header({ partners, view, setView, onExport, onNewPartner
           >
             <Download size={15} />
             Exporteer CSV
+          </button>
+
+          <button
+            onClick={onReset}
+            title="Data herladen vanuit brondata"
+            className="hidden md:flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-gray-400 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+          >
+            <RefreshCw size={15} />
+            Herladen
           </button>
 
           <button
