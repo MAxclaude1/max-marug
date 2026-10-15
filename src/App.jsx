@@ -194,6 +194,7 @@ export default function App() {
         setView={setView}
         onExport={exportCSV}
         onReset={() => setResetConfirm(true)}
+        onOpenPartner={openEditPartner}
         onNewPartner={() => openNewPartner('Lead')}
       />
 
